@@ -1,0 +1,37 @@
+{
+  "etudiants": [
+    {
+      "matricule": 1,
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "classe": {
+        "filiere": "Informatique",
+        "niveau": "Licence 3"
+      },
+      "notes": [
+        {
+          "id": 1,
+          "matiere": "TypeScript",
+          "note": 15
+        },
+        {
+          "id": 2,
+          "matiere": "Dart",
+          "note": 12
+        }
+      ],
+      "id": "e4d5"
+    },
+    {
+      "id": "e4d5739",
+      "matricule": 1,
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "classe": {
+        "filiere": "Informatique",
+        "niveau": "Licence 3"
+      },
+      "notes": []
+    }
+  ]
+}

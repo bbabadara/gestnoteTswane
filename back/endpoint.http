@@ -1,0 +1,20 @@
+### getall
+Get http://localhost:3000/etudiants
+Accept: application/json
+
+### add
+POST http://localhost:3000/etudiants
+Accept: application/json
+Content-Type: application/json
+
+{
+    "matricule": 1,
+    "nom": "Dupont",
+    "prenom": "Jean",
+    "classe": {
+      "filiere": "Informatique",
+      "niveau": "Licence 3"
+    },
+    "notes": [],
+    "id": "e4d5739"
+  }

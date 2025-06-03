@@ -8,11 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { EtudiantService } from "./services/EtudiantService.js";
+import { ListEtudiantComponent } from './components/list-etudiant-component.js';
+import { FormEtudiantComponent } from './components/form-etudiant-component.js';
 export class App {
     constructor() {
         App.etudiantService = new EtudiantService();
-        this.awaiting();
+        this.intComponent();
     }
+    //methode intermedaire async pour eviter de metrre constructor async(not possible)
     awaiting() {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.main();
@@ -33,5 +36,18 @@ export class App {
     showData() {
         console.log(this.etudiants);
     }
+    intComponent() {
+        // alert("listComponent");
+        const listComponent = document.getElementById("list-component");
+        const listEtudiantComponent = new ListEtudiantComponent();
+        listComponent.appendChild(listEtudiantComponent.element);
+        const formComponent = document.getElementById("form-component");
+        const formEtudiantComponent = new FormEtudiantComponent();
+        formComponent.appendChild(formEtudiantComponent.element);
+    }
 }
-const app = new App();
+document.addEventListener('DOMContentLoaded', () => {
+    const app = new App();
+    // alert('Application chargée avec succès !');
+    // Ici, vous pouvez appeler d'autres méthodes de l'application si nécessaire
+});

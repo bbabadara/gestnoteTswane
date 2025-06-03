@@ -1,5 +1,6 @@
 export class FormEtudiantComponent {
-    constructor() {
+    constructor(onSave) {
+        this.onSave = onSave;
         this.formElement = document.createElement('form');
         this.formElement.className = 'w-full ';
         this.formElement.id = 'form-etudiant';
@@ -19,26 +20,26 @@ export class FormEtudiantComponent {
                     <div class="w-1/2">
                         <label class="block text-gray-700 font-semibold mb-1">Nom</label>
                         <input type="text" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring"
-                            placeholder="Nom">
+                            placeholder="Nom" id="nom">
                     </div>
                     <div class="w-1/2">
                         <label class="block text-gray-700 font-semibold mb-1">Prénom</label>
                         <input type="text" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring"
-                            placeholder="Prénom">
+                            placeholder="Prénom" id="prenom">
                     </div>
                 </div>
             </div>
             <div class="flex gap-4 ">
                 <div class="w-1/2 ">
                     <label class="block text-gray-700 font-semibold mb-1">Filière</label>
-                    <select class="border rounded px-3 py-2 w-full">
+                    <select class="border rounded px-3 py-2 w-full" id="filiere">
                         <option>DATA-IA</option>
                         <option>Genie Logiciel</option>
                     </select>
                 </div>
                 <div class="w-1/2 ">
                     <label class="block text-gray-700 font-semibold mb-1">Niveau</label>
-                    <select class="border rounded px-3 py-2 w-full">
+                    <select class="border rounded px-3 py-2 w-full" id="niveau">
                         <option>L1</option>
                         <option>L2</option>
                         <option>L3</option>
@@ -78,10 +79,26 @@ export class FormEtudiantComponent {
     }
     //methode qui active les evenements sur les templates
     activateEvents() {
-        // Ici, vous pouvez ajouter des écouteurs d'événements si nécessaire
-        // par exemple, pour gérer les clics sur les lignes du tableau
+        this.onSubmitForm();
     }
     get element() {
         return this.formElement;
+    }
+    onSubmitForm() {
+        this.formElement.addEventListener('submit', (event) => {
+            event.preventDefault();
+            // Récupérer les valeurs des champs du formulaire
+            const nom = this.formElement.querySelector("#nom").value;
+            const prenom = this.formElement.querySelector("#prenom").value;
+            const filiere = this.formElement.querySelector("#filiere").value;
+            const niveau = this.formElement.querySelector("#niveau").value;
+            // Créer un nouvel étudiant
+            let matr = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const etudiant = { matricule: matr, nom, prenom, classe: { filiere, niveau } };
+            this.onSave(etudiant); // Appeler la fonction de rappel pour sauvegarder l'étudiant
+            this.formElement.reset(); // Réinitialiser le formulaire après la soumission
+        });
+    }
+    update(data) {
     }
 }

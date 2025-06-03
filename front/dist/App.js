@@ -16,34 +16,34 @@ export class App {
         this.intComponent();
     }
     //methode intermedaire async pour eviter de metrre constructor async(not possible)
-    awaiting() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.main();
-            this.showData();
-        });
-    }
-    main() {
+    loadData() {
         return __awaiter(this, void 0, void 0, function* () {
             this.etudiants = yield App.etudiantService.getAllEtudiants();
-            // .then(datas=>{
-            //     // console.log(datas);
-            //     this.etudiants=datas;
-            // }).catch(error=>{
-            //     console.log('Erreur recuperation');
-            // })
+            console.log(this.etudiants);
         });
     }
-    showData() {
-        console.log(this.etudiants);
-    }
     intComponent() {
-        // alert("listComponent");
-        const listComponent = document.getElementById("list-component");
-        const listEtudiantComponent = new ListEtudiantComponent();
-        listComponent.appendChild(listEtudiantComponent.element);
-        const formComponent = document.getElementById("form-component");
-        const formEtudiantComponent = new FormEtudiantComponent();
-        formComponent.appendChild(formEtudiantComponent.element);
+        return __awaiter(this, void 0, void 0, function* () {
+            // alert("listComponent");
+            yield this.loadData();
+            const listComponent = document.getElementById("list-component");
+            const listEtudiantComponent = new ListEtudiantComponent();
+            listEtudiantComponent.update(this.etudiants);
+            listComponent.appendChild(listEtudiantComponent.element);
+            const formComponent = document.getElementById("form-component");
+            const formEtudiantComponent = new FormEtudiantComponent((etudiant) => {
+                this.saveEtudiant(etudiant);
+                listEtudiantComponent.update(this.etudiants);
+            });
+            formComponent.appendChild(formEtudiantComponent.element);
+        });
+    }
+    saveEtudiant(etudiant) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var _a;
+            const newEtudiant = yield App.etudiantService.addEtudiant(etudiant);
+            (_a = this.etudiants) === null || _a === void 0 ? void 0 : _a.push(newEtudiant);
+        });
     }
 }
 document.addEventListener('DOMContentLoaded', () => {

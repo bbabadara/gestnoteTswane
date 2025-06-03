@@ -32,6 +32,27 @@
         "niveau": "Licence 3"
       },
       "notes": []
+    },
+    {
+      "id": "e4d5d739",
+      "matricule": 1,
+      "nom": "Diallo",
+      "prenom": "Jean",
+      "classe": {
+        "filiere": "Informatique",
+        "niveau": "Licence 3"
+      },
+      "notes": []
+    },
+    {
+      "id": "8493",
+      "matricule": "JIAY3DAK",
+      "nom": "BA",
+      "prenom": "BADARA",
+      "classe": {
+        "filiere": "DATA-IA",
+        "niveau": "L1"
+      }
     }
   ]
 }

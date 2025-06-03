@@ -24,12 +24,3 @@ export class Classe {
         this.niveau = niveau;
     }
 }
-export class Etudiant {
-    constructor(matricule, nom, prenom, classe, notes = []) {
-        this.matricule = matricule;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.classe = classe;
-        this.notes = notes;
-    }
-}

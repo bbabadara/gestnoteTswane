@@ -18,10 +18,12 @@ export class Note{
 }
 
 export class Classe{
-    constructor(public filiere:Filiere, public niveau:Niveau){}
+    constructor(public filiere:string, public niveau:string){}
 }
-export class Etudiant {
-    constructor(public matricule:string, public nom:string, public prenom:string, public classe:Classe,public notes:Note[]=[]) {
-        
-    }
+export interface Etudiant {
+    matricule: string;
+    nom: string;
+    prenom: string;
+    classe: Classe;
+    notes: Note[];
 }
